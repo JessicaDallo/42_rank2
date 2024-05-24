@@ -20,7 +20,7 @@ RM	= rm
 RMFLAGS = -f
 
 OBJ	= ft_printf.o ft_typedef.o ft_putint.o ft_putchar.o ft_putstr.o ft_putuns.o ft_puthexa.o ft_putptr.o\
-	ft_count_nbr.o ft_strlen.o ft_atoi.o ft_strdup.o ft_itoa.o\
+	ft_count_nbr.o ft_strlen.o ft_atoi.o ft_strdup.o ft_itoa.o ft_memset.o ft_bzero.o ft_calloc.o\
 
 all : $(NAME)
 

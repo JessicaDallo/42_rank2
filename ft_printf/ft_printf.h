@@ -31,4 +31,8 @@ int		ft_strlen(char *str);
 int		ft_atoi( char *str);
 char	*ft_strdup( char *s);
 char	*ft_itoa(int n);
+void	*ft_memset(void *str, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t n, size_t size);
+
 #endif

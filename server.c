@@ -12,22 +12,19 @@ char	*ft_printffree(char *str)
 	str[g_size] = '\0';
 	ft_printf("MESSAGE: %s\n", str);
 	free (str);
-	//ft_printf(" ANTES DO FREE %i\n", g_size);
 	g_size = 0;
-	//ft_printf(" DEPOIS DO FREE %i\n", g_size);
 	return (NULL);
 }
 
 char	*ft_create(int size)
 {
 	char *str = NULL;
-	str = (char*)malloc(size * sizeof(char) + 1);
+	str = ft_calloc((g_size + 1), sizeof(char));
 	if (!str)
 	{
-	//	free (str);
+		free (str);
 		return (NULL);
 	}
-	ft_printf("o que tem aqui?");
 	return (str);
 }
 
@@ -96,32 +93,6 @@ int main()
 			signal(SIGUSR2, handler_message);
 			//pause ();
 		}
+
 	}
 }
-// int main() 
-// {
-//     struct sigaction sa_size;
-//     struct sigaction sa_message;
-
-//     sa_size.sa_handler = handler_size;
-//     sa_size.sa_flags = 0;
-//     sigemptyset(&sa_size.sa_mask);
-
-//     sa_message.sa_handler = handler_message;
-//     sa_message.sa_flags = 0;
-//     sigemptyset(&sa_message.sa_mask);
-
-//     printf("PID: %d\n", getpid());
-
-//     while (1) {
-//         if (g_size == 0) {
-//             sigaction(SIGUSR1, &sa_size, NULL);
-//             sigaction(SIGUSR2, &sa_size, NULL);
-//         } else {
-//             sigaction(SIGUSR1, &sa_message, NULL);
-//             sigaction(SIGUSR2, &sa_message, NULL);
-//         }
-//         pause();
-//     }
-// }
-
