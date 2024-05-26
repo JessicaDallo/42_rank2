@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-static int g_size = 0;
+static int	g_size = 0;
 
 char	*ft_printffree(char *str)
 {
@@ -18,7 +18,9 @@ char	*ft_printffree(char *str)
 
 char	*ft_create(int size)
 {
-	char *str = NULL;
+	char	*str;
+
+	str = NULL;
 	str = ft_calloc((g_size + 1), sizeof(char));
 	if (!str)
 	{
@@ -28,17 +30,16 @@ char	*ft_create(int size)
 	return (str);
 }
 
-void handler_size(int sig)
+void	handler_size(int sig)
 {
 	static int	size = 0;
-	static int bitcount = 0;
-	
-	if (sig == SIGUSR2)	
+	static int	bitcount = 0;
+
+	if (sig == SIGUSR2)
 		size = size << 1;
 	else
 		size = (size << 1) | 1;
 	bitcount++;
-
 	if (bitcount == 32)
 	{
 		g_size = size;
@@ -48,14 +49,14 @@ void handler_size(int sig)
 	}
 }
 
-void handler_message(int sig)
+void	handler_message(int sig)
 {
 	static int	j = 0;
 	static char	c = 0;
 	static int	i = 0;
-	static char *str = NULL;
+	static char	*str = NULL;
 
-	if (sig == SIGUSR2)	
+	if (sig == SIGUSR2)
 		c = c << 1;
 	else
 		c = (c << 1) | 1;
@@ -76,23 +77,20 @@ void handler_message(int sig)
 	}
 }
 
-int main()
+int	main(void)
 {
 	ft_printf("PID: %d\n", getpid());
 	while (1)
 	{
 		if (g_size == 0)
-		{		
+		{
 			signal(SIGUSR1, handler_size);
 			signal(SIGUSR2, handler_size);
-			//pause ();
 		}
-		else 
-		{			
+		else
+		{
 			signal(SIGUSR1, handler_message);
 			signal(SIGUSR2, handler_message);
-			//pause ();
 		}
-
 	}
 }

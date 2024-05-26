@@ -5,10 +5,11 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void send_size(int pid,int size)
+void	send_size(int pid, int size)
 {
-	int i = 31;
+	int	i;
 
+	i = 31;
 	while (i >= 0)
 	{
 		if (size & (1 << i))
@@ -20,26 +21,23 @@ void send_size(int pid,int size)
 	}
 }
 
-void send_message(int pid, char *str, int size)
+void	send_message(int pid, char *str, int size)
 {
-	int i = 0;
-	int x = 0;
+	int	i;
+	int	x;
 
-	while(i < size)
+	x = 0;
+	i = 0;
+	while (i < size)
 	{
 		x = 8;
-		while (x > 0)	
+		while (x > 0)
 		{
 			if (str[i] & 0b10000000)
-			{
-				ft_printf("*");
 				kill(pid, SIGUSR1);
-			}
 			else
-			{
-				ft_printf("*");
 				kill(pid, SIGUSR2);
-			}
+			ft_printf("*");
 			str[i] = str[i] << 1;
 			x--;
 			usleep(20);
@@ -48,22 +46,24 @@ void send_message(int pid, char *str, int size)
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	if(ac != 3)
+	char	*str;
+	int		pid;
+	int		len;
+
+	if (ac != 3)
 	{
 		ft_printf("Please try again with the corrects informations. \n");
 		ft_printf("./client <PID number> <message>");
-		return(0);
+		return (0);
 	}
-	char *str = av[2];
-	int pid = atoi(av[1]);
-	int len = 0;
+	str = av[2];
+	len = 0;
 	len = ft_strlen(str);
-	
+	pid = ft_atoi(av[1]);
 	ft_printf("%d\n", len);
 	send_size(pid, len);
-	send_message(pid, str , len);
-	return 0;
-
+	send_message(pid, str, len);
+	return (0);
 }
