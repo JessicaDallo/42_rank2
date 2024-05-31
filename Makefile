@@ -5,12 +5,12 @@ CCFLAGS = cc -Wall -Werror -Wextra
 
 SERVER = server
 CLIENT = client
+
 SRCS_SERVER = server.c
 SRCS_CLIENT = client.c
 
 OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
-
 
 all: $(SERVER) $(CLIENT)
 
@@ -27,6 +27,6 @@ clean:
 
 fclean:	clean
 		$(MAKE) fclean -C ./ft_printf
-		rm -rf $(SERVER) $(CLIENT)
+		rm -rf $(SERVER) $(CLIENT) 
 
 re:	fclean all

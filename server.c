@@ -1,9 +1,16 @@
-#include "./ft_printf/ft_printf.h"
-#include <signal.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 10:31:29 by jesilva-          #+#    #+#             */
+/*   Updated: 2024/05/27 10:31:33 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minitalk.h"
 
 static int	g_size = 0;
 

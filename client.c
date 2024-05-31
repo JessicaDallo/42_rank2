@@ -1,9 +1,16 @@
-#include "./ft_printf/ft_printf.h"
-#include <signal.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <stddef.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/27 10:31:18 by jesilva-          #+#    #+#             */
+/*   Updated: 2024/05/27 10:31:22 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minitalk.h"
 
 void	send_size(int pid, int size)
 {
@@ -16,7 +23,7 @@ void	send_size(int pid, int size)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(20);
+		usleep(50);
 		i--;
 	}
 }
@@ -37,10 +44,10 @@ void	send_message(int pid, char *str, int size)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			ft_printf("*");
+			//ft_printf("*");
 			str[i] = str[i] << 1;
 			x--;
-			usleep(20);
+			usleep(50);
 		}
 		i++;
 	}
