@@ -44,7 +44,7 @@ void	send_message(int pid, char *str, int size)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			//ft_printf("*");
+			ft_printf("*");
 			str[i] = str[i] << 1;
 			x--;
 			usleep(50);
