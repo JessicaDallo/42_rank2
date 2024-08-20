@@ -1,0 +1,48 @@
+#Compiling Variables#
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux -Iinclude -g
+MINILXFLAGS = -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd -no-pie
+
+#Names#
+NAME = so_long
+
+#Library#
+LIBFT = ./include/libft/libft.a
+MINILX_DIR = ./minilibx-linux
+
+#Sources#
+SRC = so_long.c map.c validate_map.c draw_map.c moves.c 
+OBJ = $(SRC:.c=.o)
+
+
+##################### MAKEFILE RULES ##########################
+all: $(LIBFT) $(MINILX_DIR)/libmlx.a $(NAME)
+
+bonus: all $(BONUS) $(LIBFT)
+
+clean:
+	${MAKE} clean -C ./include/libft
+	rm -rf $(OBJ)
+
+fclean: clean
+	${MAKE} clean -C ./minilibx-linux
+	${MAKE} fclean -C ./include/libft
+	rm -rf $(NAME)
+
+re: fclean all
+
+################ MAKING MAIN PROGRAM ##################################
+$(NAME): $(OBJ)
+	
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L./include/libft -lft $(MINILXFLAGS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIBFT):
+	${MAKE} --no-print-directory -C ./include/libft
+
+$(MINILX_DIR)/libmlx.a:
+	$(MAKE) --no-print-directory -C $(MINILX_DIR)
+
+.PHONY: all clean fclean re
