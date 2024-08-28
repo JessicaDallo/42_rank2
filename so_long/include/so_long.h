@@ -20,17 +20,12 @@ typedef struct s_data
 	int	bpp;
 	int	line_len;
 	int	endian;
+	int	moves;
 	int	width;
 	int	height;
 	int	p_x;
 	int	p_y;
-//	int	n_x;
-	//int	n_y;
 	int	berry;
-} s_map;
-
-typedef struct s_image
-{
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*player_img;
@@ -46,8 +41,7 @@ typedef struct s_image
 	void	*floor_img;
 	int	img_width;
 	int	img_height;
-
-} s_image;
+} s_map;
 
 int main(int ac, char **av);
 
@@ -67,12 +61,13 @@ int	validate_walls(int *height, int *width, char **map);
 
 //draw_map
 void	get_positions(s_map *map); //achar onde deixar.
-void	load_images(s_image *image);
-void	draw_map(s_image *image, s_map *map);
+void	load_images(s_map *map);
+void	draw_map(s_map *map);
+void cleanup(s_map *map);
 
 //moves
-int press_key(int key, s_map *map, s_image *image);
-void move_player( s_map *map, int m_x, int m_y, s_image *image);
-//void exit_image(s_image image);
+int press_key(int key, s_map *map);
+void move_player( s_map *map, int m_x, int m_y);
+//void exit_image(s_map image);
 
 # endif

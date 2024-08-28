@@ -1,12 +1,18 @@
 #include "so_long.h"
 
+int close_window(s_map *map)
+{
+    mlx_destroy_window(map->mlx_ptr, map->win_ptr); // Fecha a janela
+    exit(0); // Sai do programa
+    return (0);
+}
+
+
 int main(int ac, char **av)
 {
 	s_map map;
-	s_image image;
-	//int i = 0;
 
-	if(ac != 2)
+	if (ac != 2)
 	{
 		ft_printf("Please try again with the corrects informations. \n");
 		ft_printf("%s <map_file.ber>\n", av[0]);
@@ -17,21 +23,17 @@ int main(int ac, char **av)
 	map.map =  read_map(av[1], &map.width, &map.height);
 	if(!map.map)
 		return (1);
-	ft_memset (&image, 0 ,sizeof(s_image));
-	image.mlx_ptr = mlx_init();
-	ft_printf("%p ponteiro \n", image.mlx_ptr);
-	image.win_ptr = mlx_new_window(image.mlx_ptr, 640, 480, "so_long");
-	ft_printf("%p ponteiro \n", image.mlx_ptr);
-	load_images(&image);
-	ft_printf("%p ponteiro \n", image.mlx_ptr);
+	map.berry = 0;
+	map.moves = 0;
+	map.mlx_ptr = mlx_init();
+	map.win_ptr = mlx_new_window(map.mlx_ptr, 1000, 420, "so_long");
 	get_positions(&map);
-	ft_printf("%p ponteiro \n", image.mlx_ptr);
-	draw_map(&image, &map);
-	ft_printf("%p ponteiro \n", image.mlx_ptr);
-	mlx_hook(image.win_ptr,  2, 1L << 0,press_key, &map);
-	ft_printf("%p ponteiro1 \n", image.mlx_ptr);
+	load_images(&map);
+	draw_map(&map);
+	mlx_hook(map.win_ptr,  2, 1L << 0,press_key, &map);
+	//mlx_hook(map.win_ptr, 17, 0, close_window, &map);
 	// Entrar no loop de eventos
-	mlx_loop(image.mlx_ptr);
+	mlx_loop(map.mlx_ptr);
 	//free(map.map);
 	// while (i < map.height)
 	// {
