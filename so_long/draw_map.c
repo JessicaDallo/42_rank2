@@ -68,6 +68,8 @@ void	draw_map(s_map *map)
 				{
 					if (map->berry == 0)
 						mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->exit_img, x * map->img_width, y * map->img_height);
+					else
+						mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->floor_img, x * map->img_width, y * map->img_height);
 				}
 			else if(map->map[y][x] == 'P')
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->player_img, x * map->img_width, y * map->img_height);

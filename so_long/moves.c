@@ -1,39 +1,103 @@
 #include "so_long.h"
 
-
 void move_player(s_map *map, int m_y, int m_x)
 {
-	int n_x;
-	int n_y;
-	
-	n_y = map->p_y + m_y;
-	n_x = map->p_x + m_x;
+    static int on_exit = 0; // Variável para rastrear se o jogador está na saída
+    int n_x = map->p_x + m_x;
+    int n_y = map->p_y + m_y;
 
-	if (n_x >= 0 && n_x < map->width && n_y >= 0 && n_y < map->height) 
-	{
-    		if (map->map[n_y][n_x] != '1') 
-		{
-			if(map->map[n_y][n_x] == 'C')
-				map->berry = map->berry - 1;
-			else if(map->map[n_y][n_x] == 'E' && map->berry == 0)
-			{
-				ft_printf("PARABENS!!");
-				cleanup(map);
-				exit(1);
-			}
-			map->map[map->p_y][map->p_x] = '0';
-			map->map[n_y][n_x] = 'P';
-			map->moves = map->moves + 1;
-			map->p_x = n_x;
-			map->p_y = n_y;
-		}
-		else
-			ft_printf("Invalid move: Out of bounds\n");
-	}
-	ft_printf("%d BERRIES \n", map->berry);
-	ft_printf("%d MOVES \n", map->moves);
-	draw_map(map);
+    // Verifica se o mapa e os ponteiros críticos estão inicializados
+    if (!map || !map->map || !map->map[map->p_y] || !map->map[map->p_y][map->p_x]) {
+        ft_printf("Error: Invalid map or player position\n");
+        return;
+    }
+
+    // Verifica se o movimento está dentro dos limites do mapa
+    if (n_x < 0 || n_x >= map->width || n_y < 0 || n_y >= map->height) {
+        ft_printf("Invalid move: Out of bounds\n");
+        return;
+    }
+
+    // Verifica se a posição de destino é uma parede
+    if (map->map[n_y][n_x] == '1') {
+        ft_printf("Invalid move: Wall encountered\n");
+        return;
+    }
+
+    // Movendo-se para uma posição de berry
+    if (map->map[n_y][n_x] == 'C') {
+        map->berry--;
+    }
+
+    // Movendo-se para a saída com todas as berries coletadas
+    if (map->map[n_y][n_x] == 'E' && map->berry == 0) {
+        ft_printf("PARABENS!!\n");
+        cleanup(map);
+        exit(0);
+    }
+
+    // Atualizando o mapa de acordo com o movimento
+    if (on_exit == 1) {
+	map->map[map->p_y][map->p_x] = 'E'; // Restaura 'E' se estava na saída
+        on_exit = 0;
+    } else {
+        map->map[map->p_y][map->p_x] = '0'; // Marca a posição anterior como livre
+    }
+
+    if (map->map[n_y][n_x] == 'E') {
+        on_exit = 1; // Define que agora está na saída
+    }
+
+    // Atualiza a posição do jogador
+    //map->map[map->p_y][map->p_x] = '0';
+    map->map[n_y][n_x] = 'P';
+    map->p_x = n_x;
+    map->p_y = n_y;
+    map->moves++;
+
+    // Exibe o status atual
+    ft_printf("%d BERRIES \n", map->berry);
+    ft_printf("%d MOVES \n", map->moves);
+
+    // Atualiza o desenho do mapa
+    draw_map(map);
 }
+
+
+
+// void move_player(s_map *map, int m_y, int m_x)
+// {
+// 	int n_x;
+// 	int n_y;
+	
+// 	n_y = map->p_y + m_y;
+// 	n_x = map->p_x + m_x;
+
+// 	if (n_x >= 0 && n_x < map->width && n_y >= 0 && n_y < map->height) 
+// 	{
+//     		if (map->map[n_y][n_x] != '1') 
+// 		{
+// 			if(map->map[n_y][n_x] == 'C')
+// 				map->berry = map->berry - 1;
+// 			else if(map->map[n_y][n_x] == 'E' && map->berry == 0)
+// 			{
+// 				ft_printf("PARABENS!!");
+// 				cleanup(map);
+// 				exit(1);
+// 			}
+// 			map->map[map->p_y][map->p_x] = '0';
+// 			map->map[n_y][n_x] = 'P';
+// 			map->moves = map->moves + 1;
+// 			map->p_x = n_x;
+// 			map->p_y = n_y;
+// 		}
+// 		else
+// 			ft_printf("Invalid move: Out of bounds\n");
+// 	}
+// 	ft_printf("%d BERRIES \n", map->berry);
+// 	ft_printf("%d MOVES \n", map->moves);
+// 	draw_map(map);
+// }
 
 void cleanup(s_map *map) 
 {
