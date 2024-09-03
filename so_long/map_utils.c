@@ -42,3 +42,10 @@ int	check_map(char *str, char av[0])
 	}
 	return (1);
 }
+
+void	ft_atribute(s_map *map)
+{
+	map->berry = 0;
+	map->moves = 0;
+	map->player_img = map->p_r;
+}

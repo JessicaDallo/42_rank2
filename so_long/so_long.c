@@ -22,13 +22,12 @@ int	main(int ac, char **av)
 	map.map = read_map(av[1], &map.width, &map.height);
 	if (!map.map)
 		return (1);
-	map.berry = 0;
-	map.moves = 0;
 	map.mlx_ptr = mlx_init();
 	get_map_size(&map);
 	map.win_ptr = mlx_new_window(map.mlx_ptr, map.win_w, map.win_h, "so_long");
-	get_positions(&map);
 	load_images(&map);
+	ft_atribute(&map);
+	get_positions(&map);
 	draw_map(&map);
 	mlx_hook(map.win_ptr, 2, 1L << 0, press_key, &map);
 	mlx_loop(map.mlx_ptr);

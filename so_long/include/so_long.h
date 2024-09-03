@@ -33,6 +33,10 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*player_img;
+	void	*p_u;
+	void	*p_d;
+	void	*p_l;
+	void	*p_r;
 	void	*wall_img_u_l;
 	void	*wall_img_u_r;
 	void	*wall_img_d_l;
@@ -68,7 +72,7 @@ void	load_images(s_map *map);
 void	draw_map(s_map *map);
 
 //moves
-void	move_player( s_map *map, int m_x, int m_y);
+void	move_player( s_map *map, int m_x, int m_y, int key);
 int	press_key(int key, s_map *map);
 void	ft_move(s_map *map, int n_y, int n_x);
 void	ft_win(s_map *map);
@@ -81,5 +85,6 @@ void	ft_destroy(s_map *map);
 int	check_map(char *str, char av[0]);
 void	get_positions(s_map *map);
 void	get_map_size(s_map *map);
+void	ft_atribute(s_map *map);
 
 #endif

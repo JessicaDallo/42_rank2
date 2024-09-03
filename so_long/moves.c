@@ -32,7 +32,19 @@ void	ft_move(s_map *map, int n_y, int n_x)
 	map->moves++;
 }
 
-void	move_player(s_map *map, int m_y, int m_x)
+void ft_direction(s_map *map, int key)
+{
+	if (key == KEY_W)
+		map->player_img = map->p_u;
+	else if (key == KEY_S)
+		map->player_img = map->p_d;
+	else if (key == KEY_A)
+		map->player_img = map->p_l;
+	else if (key == KEY_D)
+		map->player_img = map->p_r;
+}
+
+void	move_player(s_map *map, int m_y, int m_x, int key)
 {
 	int	n_x;
 	int	n_y;
@@ -42,6 +54,7 @@ void	move_player(s_map *map, int m_y, int m_x)
 	if (n_x >= 0 && n_x < map->width && n_y >= 0 && n_y < map->height)
 	{
 		ft_move(map, n_y, n_x);
+		ft_direction(map, key);
 	}
 	draw_map(map);
 }
@@ -49,13 +62,13 @@ void	move_player(s_map *map, int m_y, int m_x)
 int	press_key(int key, s_map *map)
 {
 	if (key == KEY_W)
-		move_player(map, -1, 0);
+		move_player(map, -1, 0, key);
 	else if (key == KEY_A)
-		move_player(map, 0, -1);
+		move_player(map, 0, -1, key);
 	else if (key == KEY_S)
-		move_player(map, 1, 0);
+		move_player(map, 1, 0, key);
 	else if (key == KEY_D)
-		move_player(map, 0, 1);
+		move_player(map, 0, 1, key);
 	if (key == KEY_ESC)
 	{
 		ft_printf("Successfully completed\n");

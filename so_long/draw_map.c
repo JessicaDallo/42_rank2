@@ -66,7 +66,13 @@ void	draw_map(s_map *map)
 
 void	load_images(s_map *map)
 {
-	map->player_img = mlx_xpm_file_to_image(map->mlx_ptr,
+	map->p_u = mlx_xpm_file_to_image(map->mlx_ptr,
+			"./sprites/pac_U.xpm", &map->img_w, &map->img_h);
+	map->p_d = mlx_xpm_file_to_image(map->mlx_ptr,
+			"./sprites/pac_D.xpm", &map->img_w, &map->img_h);
+	map->p_l = mlx_xpm_file_to_image(map->mlx_ptr,
+			"./sprites/pac_L.xpm", &map->img_w, &map->img_h);
+	map->p_r = mlx_xpm_file_to_image(map->mlx_ptr,
 			"./sprites/pac_R.xpm", &map->img_w, &map->img_h);
 	map->wall_img_d_l = mlx_xpm_file_to_image(map->mlx_ptr,
 			"./sprites/do_L.xpm", &map->img_w, &map->img_h);
