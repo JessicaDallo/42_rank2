@@ -72,7 +72,6 @@ int		ft_putptr(unsigned long long ptr);
 int		ft_count_nbr(long int nb);
 int		ft_check(char *stash);
 
-
 typedef struct s_list
 {
 	void			*content;

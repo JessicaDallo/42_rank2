@@ -25,7 +25,8 @@ int	main(int ac, char **av)
 	map.berry = 0;
 	map.moves = 0;
 	map.mlx_ptr = mlx_init();
-	map.win_ptr = mlx_new_window(map.mlx_ptr, 1000, 420, "so_long");
+	get_map_size(&map);
+	map.win_ptr = mlx_new_window(map.mlx_ptr, map.win_w, map.win_h, "so_long");
 	get_positions(&map);
 	load_images(&map);
 	draw_map(&map);

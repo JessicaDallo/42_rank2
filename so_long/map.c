@@ -1,17 +1,6 @@
 #include "so_long.h"
 #include <string.h>
 
-int	check_map(char *str, char av[0])
-{
-	if (!ft_strnstr(str, ".ber", ft_strlen(str)))
-	{
-		ft_printf("Please try again with a map.ber! \n");
-		ft_printf("%s <map_file.ber>\n", av[0]);
-		return (0);
-	}
-	return (1);
-}
-
 char	**init_map(int *height)
 {
 	char	**map;
@@ -49,39 +38,50 @@ void	get_height(const char *file, int *height)
 		ft_printf("Erro ao abrir o arquivo");
 		return ;
 	}
-	while ((line = get_next_line(fd)) != NULL) // não sei arrumar ainda
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		(*height)++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
+}
+
+char	**preencher(char **map, int fd)
+{
+	int		i;
+	char	*line;
+
+	i = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		map[i] = line;
+		i++;
+		line = get_next_line(fd);
+	}
+	map[i] = NULL;
+	free(line);
+	return (map);
 }
 
 char	**read_map(const char *file, int *width, int *height)
 {
 	int		fd;
-	int		i;
-	char	*line;
 	char	**map;
 
-	i = 0;
 	*height = 0;
 	fd = open(file, O_RDONLY);
 	get_height(file, height);
 	map = init_map(height);
-	while ((line = get_next_line(fd)) != NULL)//aqui tbm não sei 
-	{
-		map[i] = line;
-		i++;
-	}
-	map[i] = NULL;
+	map = preencher(map, fd);
 	get_width(height, width, map);
 	if (!validate_map(height, width, map))
 	{
 		ft_printf("Invalid map!\n");
 		return (NULL);
 	}
-	free(line);
 	close(fd);
 	return (map);
 }

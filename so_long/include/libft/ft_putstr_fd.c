@@ -16,11 +16,13 @@
 void	ft_putstr_fd(char *s, int fd)
 {
 	if (fd >= 0 && fd <= 2)
+	{
 		while (s && *s)
 		{
 			write (fd, s, 1);
 			s++;
 		}
+	}
 }
 // int	main(void)
 // {

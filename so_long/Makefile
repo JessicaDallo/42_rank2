@@ -11,7 +11,7 @@ LIBFT = ./include/libft/libft.a
 MINILX_DIR = ./minilibx-linux
 
 #Sources#
-SRC = so_long.c map.c validate_map.c draw_map.c moves.c 
+SRC = so_long.c map.c map_utils.c validate_map.c draw_map.c moves.c ft_free.c
 OBJ = $(SRC:.c=.o)
 
 
