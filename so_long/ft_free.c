@@ -1,5 +1,12 @@
 #include "so_long.h"
 
+int	close_window(s_map *map)
+{
+	ft_free(map);
+	exit(0);
+	return (0);
+}
+
 void ft_destroy_wall(s_map *map)
 {
 	if (map->wall_img_u_l)
@@ -18,6 +25,7 @@ void ft_destroy_wall(s_map *map)
 		mlx_destroy_image(map->mlx_ptr, map->wall_img_sq);
 }
 
+
 void	ft_destroy_player(s_map *map)
 {
 	if (map->p_u)
@@ -28,8 +36,6 @@ void	ft_destroy_player(s_map *map)
 		mlx_destroy_image(map->mlx_ptr, map->p_l);
 	if (map->p_r)
 		mlx_destroy_image(map->mlx_ptr, map->p_r);
-	//if (map->player_img)
-	//	mlx_destroy_image(map->mlx_ptr, map->player_img);
 }
 
 void	ft_destroy(s_map *map)

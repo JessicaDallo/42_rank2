@@ -34,13 +34,13 @@ void	ft_move(s_map *map, int n_y, int n_x)
 
 void ft_direction(s_map *map, int key)
 {
-	if (key == KEY_W)
+	if (key == KEY_W || key == KEY_U)
 		map->player_img = map->p_u;
-	else if (key == KEY_S)
+	else if (key == KEY_S || key == KEY_DN)
 		map->player_img = map->p_d;
-	else if (key == KEY_A)
+	else if (key == KEY_A || key == KEY_L)
 		map->player_img = map->p_l;
-	else if (key == KEY_D)
+	else if (key == KEY_D || key == KEY_R)
 		map->player_img = map->p_r;
 }
 
@@ -61,13 +61,13 @@ void	move_player(s_map *map, int m_y, int m_x, int key)
 
 int	press_key(int key, s_map *map)
 {
-	if (key == KEY_W)
+	if (key == KEY_W || key == KEY_U)
 		move_player(map, -1, 0, key);
-	else if (key == KEY_A)
+	else if (key == KEY_A || key == KEY_L)
 		move_player(map, 0, -1, key);
-	else if (key == KEY_S)
+	else if (key == KEY_S || key == KEY_DN)
 		move_player(map, 1, 0, key);
-	else if (key == KEY_D)
+	else if (key == KEY_D || key == KEY_R)
 		move_player(map, 0, 1, key);
 	if (key == KEY_ESC)
 	{

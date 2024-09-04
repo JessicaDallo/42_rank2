@@ -1,10 +1,21 @@
 #include "so_long.h"
 
-int	close_window(s_map *map)
+void resize_window(int width, int height, s_map *map)
 {
-	mlx_destroy_window(map->mlx_ptr, map->win_ptr);
-	exit(0);
-	return (0);
+    // Atualiza variáveis de largura e altura
+    map->width = width;
+    map->height = height;
+    // Limpa e redesenha a tela
+    mlx_clear_window(map->mlx_ptr, map->win_ptr);
+    draw_map(map);
+    display_moves(map);
+}
+
+int handle_resize( s_map *map)
+{
+    // Handler para eventos de redimensionamento
+    resize_window(map->width, map->height, map);
+    return (0);
 }
 
 int	main(int ac, char **av)
@@ -29,7 +40,9 @@ int	main(int ac, char **av)
 	ft_atribute(&map);
 	get_positions(&map);
 	draw_map(&map);
+	mlx_hook(map.win_ptr, 17, 0, close_window, &map);
 	mlx_hook(map.win_ptr, 2, 1L << 0, press_key, &map);
+	 mlx_hook(map.win_ptr, 22, 0, handle_resize, &map); // Handle window resize
 	mlx_loop(map.mlx_ptr);
 	return (0);
 }

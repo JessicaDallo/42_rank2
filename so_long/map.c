@@ -48,7 +48,7 @@ void	get_height(const char *file, int *height)
 	close(fd);
 }
 
-char	**preencher(char **map, int fd)
+char	**to_fill(char **map, int fd)
 {
 	int		i;
 	char	*line;
@@ -75,7 +75,7 @@ char	**read_map(const char *file, int *width, int *height)
 	fd = open(file, O_RDONLY);
 	get_height(file, height);
 	map = init_map(height);
-	map = preencher(map, fd);
+	map = to_fill(map, fd);
 	get_width(height, width, map);
 	if (!validate_map(height, width, map))
 	{

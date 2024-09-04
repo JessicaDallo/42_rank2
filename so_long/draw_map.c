@@ -1,5 +1,17 @@
 #include "so_long.h"
 
+void display_moves(s_map *map)
+{
+	char	*moves;
+	char	*msg;
+
+	moves = ft_itoa(map->moves);
+	msg = ft_strjoin("MOVES: ", moves);
+	mlx_string_put(map->mlx_ptr, map->win_ptr, 50, 40, 0xFF0000, msg);
+	free(moves);
+	free(msg);
+}
+
 void	draw_wall(s_map *map, int y, int x)
 {
 	if (y == 0 && x == 0)
@@ -62,6 +74,7 @@ void	draw_map(s_map *map)
 		}
 		y++;
 	}
+	display_moves(map);
 }
 
 void	load_images(s_map *map)

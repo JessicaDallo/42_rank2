@@ -6,6 +6,10 @@
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_ESC 65307
+# define KEY_U 65362
+# define KEY_DN 65364
+# define KEY_L 65361
+# define KEY_R 65363
 
 # include <mlx.h>
 # include <stdlib.h>
@@ -52,39 +56,44 @@ typedef struct s_data
 int main(int ac, char **av);
 
 //map
-void	get_height(const char *file, int *height);
-void	get_width(int *height, int *width, char **map);
 char	**init_map(int *height);
+void	get_width(int *height, int *width, char **map);
+void	get_height(const char *file, int *height);
+char	**to_fill(char **map, int fd);
 char	**read_map(const char *file, int *width, int *height);
-char	**preencher(char **map, int fd);
 
 //validate map
 int	validate_comp(char map, int i, int *height);
-int	validate_rec(int *height, int *width,char **map);
-int	validate_map(int *height, int *width, char **map);
-int	validate_char(int *height, int *width, char **map);
 int	validate_walls(int *height, int *width, char **map);
+int	validate_rec(int *height, int *width,char **map);
+int	validate_char(int *height, int *width, char **map);
+int	validate_map(int *height, int *width, char **map);
 
 //draw_map
+void	display_moves(s_map *map);
 void	draw_wall(s_map *map, int y, int x);
 void	draw_exit(s_map *map, int y, int x);
-void	load_images(s_map *map);
 void	draw_map(s_map *map);
+void	load_images(s_map *map);
 
 //moves
+void	ft_win(s_map *map);
+void	ft_move(s_map *map, int n_y, int n_x);
+void	ft_direction(s_map *map, int key);
 void	move_player( s_map *map, int m_x, int m_y, int key);
 int	press_key(int key, s_map *map);
-void	ft_move(s_map *map, int n_y, int n_x);
-void	ft_win(s_map *map);
 
 //free
-void	ft_free(s_map *map);
+int	close_window(s_map *map);
+void	ft_destroy_wall(s_map *map);
+void	ft_destroy_player(s_map *map);
 void	ft_destroy(s_map *map);
+void	ft_free(s_map *map);
 
 //map_utils
-int	check_map(char *str, char av[0]);
-void	get_positions(s_map *map);
 void	get_map_size(s_map *map);
+void	get_positions(s_map *map);
+int	check_map(char *str, char av[0]);
 void	ft_atribute(s_map *map);
 
 #endif
