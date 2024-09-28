@@ -13,6 +13,7 @@
 
 # include <mlx.h>
 # include <stdlib.h>
+# include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include "./libft/libft.h"
@@ -51,7 +52,7 @@ typedef struct s_data
 	void	*coin_img;
 	void	*exit_img;
 	void	*floor_img;
-} s_map;
+} t_map;
 
 int main(int ac, char **av);
 
@@ -70,30 +71,40 @@ int	validate_char(int *height, int *width, char **map);
 int	validate_map(int *height, int *width, char **map);
 
 //draw_map
-void	display_moves(s_map *map);
-void	draw_wall(s_map *map, int y, int x);
-void	draw_exit(s_map *map, int y, int x);
-void	draw_map(s_map *map);
-void	load_images(s_map *map);
+void	display_moves(t_map *map);
+void	draw_wall(t_map *map, int y, int x);
+void	draw_exit(t_map *map, int y, int x);
+void	draw_map(t_map *map);
+
+//load_images
+void	load_images(t_map *map);
+void	load_walls(t_map *map);
+void 	load_player(t_map *map);
+void	load_floor(t_map *map);
+
 
 //moves
-void	ft_win(s_map *map);
-void	ft_move(s_map *map, int n_y, int n_x);
-void	ft_direction(s_map *map, int key);
-void	move_player( s_map *map, int m_x, int m_y, int key);
-int	press_key(int key, s_map *map);
+void	ft_win(t_map *map);
+void	ft_move(t_map *map, int n_y, int n_x);
+void	ft_direction(t_map *map, int key);
+void	move_player( t_map *map, int m_x, int m_y, int key);
+int	press_key(int key, t_map *map);
 
 //free
-int	close_window(s_map *map);
-void	ft_destroy_wall(s_map *map);
-void	ft_destroy_player(s_map *map);
-void	ft_destroy(s_map *map);
-void	ft_free(s_map *map);
+int	close_window(t_map *map);
+void	ft_destroy_wall(t_map *map);
+void	ft_destroy_player(t_map *map);
+void	ft_destroy(t_map *map);
+void	ft_free(t_map *map);
 
 //map_utils
-void	get_map_size(s_map *map);
-void	get_positions(s_map *map);
-int	check_map(char *str, char av[0]);
-void	ft_atribute(s_map *map);
+void	ft_free_array(char **map, int *height);
+void	get_map_size(t_map *map);
+void	get_positions(t_map *map);
+int	check_map(char *str, char *p_name);
+void	ft_atribute(t_map *map);
+
+//verify_rech
+
 
 #endif
