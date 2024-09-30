@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	load_images(&map);
 	ft_atribute(&map);
 	get_positions(&map);
+	validade_reach(&map);
 	draw_map(&map);
 	mlx_hook(map.win_ptr, 17, 0, close_window, &map);
 	mlx_hook(map.win_ptr, 2, 1L << 0, press_key, &map);

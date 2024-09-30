@@ -12,7 +12,7 @@ void	ft_win(t_map *map)
 	ft_printf("⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀\n");
 	ft_printf("⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
 	ft_printf("  ⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n");
-	ft_printf("PARABENS!!\n");
+	ft_printf("CONGRATULATIONS!!\n");
 	ft_free(map);
 	exit(0);
 }

@@ -18,6 +18,14 @@
 # include <fcntl.h>
 # include "./libft/libft.h"
 
+typedef struct s_ff
+{
+	char	**map;
+	int	**vis;
+	int	width;
+	int	height;
+}	t_ff;
+
 typedef struct s_data
 {
 	char	*addr;
@@ -105,6 +113,12 @@ int	check_map(char *str, char *p_name);
 void	ft_atribute(t_map *map);
 
 //verify_rech
+void	init_vis(t_ff *ff);
+void	flood_fill(t_ff *ff, int x, int y);
+void	check_player(t_ff *ff, t_map *map);
+void	validade_reach(t_map *map);
 
+//free_ff
+void	free_ff(t_ff *ff);
 
 #endif
