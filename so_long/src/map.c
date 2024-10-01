@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 12:36:12 by jesilva-          #+#    #+#             */
+/*   Updated: 2024/09/30 12:36:16 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 char	**init_map(int *height)
@@ -7,7 +19,7 @@ char	**init_map(int *height)
 	map = ft_calloc(sizeof(char *), *height + 1);
 	if (!map)
 	{
-		perror("Erro ao alocar memória para o mapa");
+		perror("Error!\n Memory alloc for the map");
 		return (NULL);
 	}
 	return (map);
@@ -34,7 +46,7 @@ void	get_height(const char *file, int *height)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Erro ao abrir o arquivo");
+		ft_printf("Error!\nError opening file\n");
 		return ;
 	}
 	line = get_next_line(fd);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 12:36:41 by jesilva-          #+#    #+#             */
+/*   Updated: 2024/09/30 12:36:44 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	main(int ac, char **av)
@@ -21,6 +33,7 @@ int	main(int ac, char **av)
 	load_images(&map);
 	ft_atribute(&map);
 	get_positions(&map);
+	validade_reach(&map);
 	draw_map(&map);
 	mlx_hook(map.win_ptr, 17, 0, close_window, &map);
 	mlx_hook(map.win_ptr, 2, 1L << 0, press_key, &map);
