@@ -33,7 +33,7 @@ void	get_width(int *height, int *width, char **map)
 	if (ft_check(map[0]) == 1)
 		x = 2;
 	if (*height > 0 && map[0] != NULL)
-		*width = (strlen(map[0]) - x);
+		*width = (strlen(map[0]) - 1);
 	else
 		*width = 0;
 }

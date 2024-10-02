@@ -68,7 +68,7 @@ int	validate_rec(int *height, int *width, char **map)
 		x = 0;
 		if (ft_check(map[i]) == 1)
 			x = 2;
-		if ((ft_strlen(map[i]) - x) != *width)
+		if ((ft_strlen(map[i]) - 1) != *width)
 		{
 			return (0);
 		}
