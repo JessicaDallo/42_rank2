@@ -76,8 +76,8 @@ void	check_player(t_ff *ff, t_map *map)
 	if (p_t == 1)
 	{
 		ft_printf("Error!\nGame impossible to finish, player is trapped!\n");
-		free_ff(ff);
-		ft_free(map);
+		//free_ff(ff);
+		//ft_free(map);
 		exit(0);
 	}
 }

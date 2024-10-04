@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 12:38:14 by jesilva-          #+#    #+#             */
+/*   Updated: 2024/09/30 12:38:16 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	validate_comp(char map, int i, int *height)
@@ -56,7 +68,7 @@ int	validate_rec(int *height, int *width, char **map)
 		x = 0;
 		if (ft_check(map[i]) == 1)
 			x = 2;
-		if ((ft_strlen(map[i]) - x) != *width)
+		if ((ft_strlen(map[i]) - 1) != *width)
 		{
 			return (0);
 		}

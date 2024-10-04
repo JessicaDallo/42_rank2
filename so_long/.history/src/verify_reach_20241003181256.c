@@ -119,5 +119,5 @@ void	validade_reach(t_map *map)
 	flood_fill(&ff, map->p_x, map->p_y);
 	check_player(&ff, map);
 	check_c_e(&ff, map);
-	free_ff(&ff);
+	//free_ff(&ff);
 }

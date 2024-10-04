@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 12:38:00 by jesilva-          #+#    #+#             */
+/*   Updated: 2024/09/30 12:38:02 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_free_array(char **map, int *height)
@@ -5,12 +17,12 @@ void	ft_free_array(char **map, int *height)
 	int	i;
 
 	i = 0;
-	while(i < *height)
-		{
-			if (map[i] != NULL)
-				free(map[i]);
-			i++;
-		}
+	while (i < *height)
+	{
+		if (map[i] != NULL)
+			free(map[i]);
+		i++;
+	}
 	free(map);
 }
 
@@ -51,13 +63,13 @@ int	check_map(char *str, char *p_name)
 	if (!ft_strnstr(str, ".ber", ft_strlen(str)))
 	{
 		ft_printf("Please try again with the corrects informations. \n");
-		ft_printf("%s <map_file.ber>\n", p_name);
+		ft_printf("%s <map/map_file.ber>\n", p_name);
 		return (0);
 	}
-	else if(!ft_strnstr(str, "map/", ft_strlen(str)))
+	else if (!ft_strnstr(str, "map/", ft_strlen(str)))
 	{
 		ft_printf("Please try again with the corrects informations. \n");
-		ft_printf("%s <map_file.ber>\n", p_name);
+		ft_printf("%s <map/map_file.ber>\n", p_name);
 		return (0);
 	}
 	return (1);
