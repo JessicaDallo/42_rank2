@@ -32,9 +32,9 @@ int	error(int ac, char **av, t_node **stack_a)
 		initial = ft_split(av[1], ' ');
 	else if (ac > 2)
 		av++;
-	if (!initial && verror(av) == 0)
+	if (!initial && verif_error(av) == 0)
 		init_stack(stack_a, av);
-	else if (initial && verror(av) == 0)
+	else if (initial && verif_error(initial) == 0)
 		init_stack(stack_a, initial);
 	if (initial)
 	{
@@ -63,7 +63,7 @@ int	error_syntax(char **av)
 		{
 			if (j == 0 && ((av[i][j] == '-') || av[i][j] == '+'))
 				j++;
-			if (ft_isdigit(av[i][j] == 0))
+			if (!ft_isdigit(av[i][j]))
 				return (1);
 			j++;
 		}
@@ -80,13 +80,13 @@ int	error_size(char **av)
 	while (av[i])
 	{
 		if (ft_atol(av[i]) > INT_MAX || ft_atol(av[i]) < INT_MIN)
-			return (1);
+				return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	verror(char **av)
+int	verif_error(char **av)
 {
 	if (av == NULL || av[0] == NULL)
 		return (0);

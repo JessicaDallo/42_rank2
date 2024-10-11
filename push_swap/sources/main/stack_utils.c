@@ -1,11 +1,11 @@
 #include "../../inc/push_swap.h"
 
-int	list_size(t_node **stack)
+int	stack_size(t_node *stack)
 {
 	int		i;
 	t_node	*temp;
 
-	temp = *stack;
+	temp = stack;
 	i = 0;
 	while (temp)
 	{
@@ -15,34 +15,42 @@ int	list_size(t_node **stack)
 	return (i);
 }
 
-int	list_min(t_node **stack_a)
+t_node	*stack_min(t_node *stack_a)
 {
-	int		i;
+	long		i;
+	t_node	*temp_min;
 	t_node	*temp;
 
-	temp = *stack_a;
-	i = temp->nbr;
+	temp = stack_a;
+	i = LONG_MAX;
 	while (temp != NULL)
 	{
 		if (i > temp->nbr)
+		{
 			i = temp->nbr;
+			temp_min = temp;
+		}
 		temp = temp->next;
 	}
-	return (i);
+	return (temp_min);
 }
 
-int	list_max(t_node **stack_a)
+t_node	*stack_max(t_node *stack_a)
 {
-	int		i;
+	long		i;
 	t_node	*temp;
+	t_node	*temp_max;
 
-	temp = *stack_a;
-	i = temp->nbr;
+	temp = stack_a;
+	i = LONG_MIN;
 	while (temp != NULL)
 	{
 		if (i < temp->nbr)
+		{
 			i = temp->nbr;
+			temp_max = temp;
+		}
 		temp = temp->next;
 	}
-	return (i);
+	return (temp_max);
 }

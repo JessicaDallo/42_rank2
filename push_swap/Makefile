@@ -17,6 +17,7 @@ NAME	= push_swap
 LIBFT = ./libft/libft.a
 
 # objects / functions #
+#$(DIR)algorithm/ordering.c \#
 CC	= cc
 CFLAGS	= -g -o0 -Wall -Wextra -Werror
 RM	= rm -rf
@@ -25,11 +26,16 @@ DIR	= sources/
 SRCS	= $(DIR)main/push_swap.c \
 	$(DIR)main/stack_init.c \
 	$(DIR)main/errors_push.c \
-	$(DIR)main/moves.c \
-	$(DIR)main/swaps_moves.c \
-	$(DIR)main/list_utils.c \
-	$(DIR)algorithm/sorted.c \
-	$(DIR)algorithm/ordering.c
+	$(DIR)main/stack_utils.c \
+	$(DIR)commands/push.c \
+	$(DIR)commands/rotates.c \
+	$(DIR)commands/swap_moves.c \
+	$(DIR)commands/sorted.c \
+	$(DIR)commands/rev_rotate.c \
+	$(DIR)algorithm/a_to_b.c \
+	$(DIR)algorithm/b_to_a.c \
+	$(DIR)algorithm/ordering.c \
+	$(DIR)algorithm/ordering_utils.c
 
 OBJ 	= $(SRCS:.c=.o)
 	

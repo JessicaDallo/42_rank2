@@ -23,7 +23,7 @@ void	ft_bzero(void *s, size_t n)
 /*int	main(void)
 {
 		char str[] = "oito";
-		ft_bzero(str, 4);
+		ft_bzero(str, 4));
 		printf("%s\n", str);
 	return (0);
 }*/
