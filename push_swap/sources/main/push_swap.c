@@ -12,21 +12,6 @@
 
 #include "../../inc/push_swap.h"
 
-void	print_list(t_node **stack, char c)
-{
-	t_node	*temp;
-
-	temp = *stack;
-	while (temp)
-	{
-		ft_printf("%i ", temp->nbr, c);
-		temp = temp->next;
-	}
-	ft_printf("%c \n", c);
-	ft_printf("%i -> list size\n", stack_size(*stack));
-}
-
-
 void	push_swap(int ac, t_node **stack_a, t_node **stack_b)
 {
 	(void)ac;

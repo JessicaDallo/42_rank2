@@ -2,14 +2,13 @@
 
 void	min_top(t_node **stack_a)
 {
-	while((*stack_a)->nbr != stack_min(*stack_a)->nbr)
+	while ((*stack_a)->nbr != stack_min(*stack_a)->nbr)
 	{
 		if (stack_min(*stack_a)->above_med)
 			rotate(stack_a, 'a');
 		else
 			rev_rotate(stack_a, 'a');
 	}
-
 }
 
 void	b_to_a(t_node **stack_a, t_node **stack_b)
@@ -17,7 +16,6 @@ void	b_to_a(t_node **stack_a, t_node **stack_b)
 	pre_push(stack_a, (*stack_b)->tag_node, 'a');
 	push(stack_b, stack_a, 'a');
 }
-
 
 void	a_to_b(t_node **stack_a, t_node **stack_b)
 {
@@ -30,28 +28,27 @@ void	a_to_b(t_node **stack_a, t_node **stack_b)
 	}
 	else if (!(better_node->above_med) && !(better_node->tag_node->above_med))
 		rev_rotate_both(stack_a, stack_b, better_node);
-	pre_push(stack_a, better_node, 'a');//para ter certeza que o nó mais barato está em cima
-	pre_push(stack_b, better_node->tag_node, 'b'); //para ter certeza que o tag node est+á em cima e pronto para push
+	pre_push(stack_a, better_node, 'a');
+	pre_push(stack_b, better_node->tag_node, 'b');
 	push(stack_a, stack_b, 'b');
 }
-
 
 void	ordering(t_node **stack_a, t_node **stack_b)
 {
 	int	size_a;
 
 	size_a = stack_size(*stack_a);
-	if(size_a-- > 3 && !is_sorted(*stack_a))
+	if (size_a-- > 3 && !is_sorted(*stack_a))
 		push(stack_a, stack_b, 'b');
-	if(size_a-- > 3 && !is_sorted(*stack_a))
+	if (size_a-- > 3 && !is_sorted(*stack_a))
 		push(stack_a, stack_b, 'b');
-	while(size_a-- > 3 && !is_sorted(*stack_a))
+	while (size_a-- > 3 && !is_sorted(*stack_a))
 	{
 		init_push_a(*stack_a, *stack_b);
 		a_to_b(stack_a, stack_b);
 	}
 	sort_three(stack_a);
-	while(*stack_b)
+	while (*stack_b)
 	{
 		init_push_b(*stack_a, *stack_b);
 		b_to_a(stack_a, stack_b);

@@ -18,12 +18,12 @@ static void	rot(t_node **stack)
 
 void	rotate(t_node **stack, char c)
 {
-	if(c == 'a')
+	if (c == 'a')
 	{
 		rot(stack);
 		ft_printf("ra\n");
 	}
-	else if(c == 'b')
+	else if (c == 'b')
 	{
 		rot(stack);
 		ft_printf("rb\n");

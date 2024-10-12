@@ -6,7 +6,6 @@ int	is_sorted(t_node *stack_a)
 	t_node	*current;
 
 	current = stack_a;
-
 	while (current->next != NULL)
 	{
 		if (current->nbr > current->next-> nbr)
@@ -35,7 +34,7 @@ void	sort_three(t_node **stack_a)
 	else if (a > b && a < c && b < c)
 		swap(stack_a, 'a');
 	else if (a < b && a > c && b > c)
-		rev_rotate(stack_a,'a');
+		rev_rotate(stack_a, 'a');
 	else if (a > b && a > c && b < c)
 		rotate(stack_a, 'a');
 	else if (a > b && a > c && b > c)
@@ -64,7 +63,7 @@ void	sort_five(t_node **stack_a, t_node **stack_b)
 		push(stack_b, stack_a, 'a');
 	if ((*stack_a)->nbr == min && !is_sorted(*stack_a))
 	{
-		swap(stack_a,'a');
+		swap(stack_a, 'a');
 		rotate(stack_a, 'a');
 	}
 	else if (!is_sorted(*stack_a))

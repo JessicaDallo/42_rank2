@@ -1,4 +1,3 @@
-
 #include "../../inc/push_swap.h"
 
 static void	swap_stack(t_node *stack)
@@ -14,12 +13,12 @@ static void	swap_stack(t_node *stack)
 
 void	swap(t_node **stack, char c)
 {
-	if(c == 'a')
+	if (c == 'a')
 	{
 		swap_stack(*stack);
 		ft_printf("sa\n");
 	}
-	else if(c == 'b')
+	else if (c == 'b')
 	{
 		swap_stack(*stack);
 		ft_printf("sb\n");

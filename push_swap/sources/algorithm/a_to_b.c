@@ -22,17 +22,17 @@ void	cost_a(t_node *stack_a, t_node *stack_b)
 
 void	tag_node_a(t_node *stack_a, t_node *stack_b)
 {
-	t_node	*temp_b;
-	t_node	*temp_tag;
-	long 		better_index;
+	t_node		*temp_b;
+	t_node		*temp_tag;
+	long		better_index;
 
-	while(stack_a)
+	while (stack_a)
 	{
 		better_index = LONG_MIN;
 		temp_b = stack_b;
-		while(temp_b)
+		while (temp_b)
 		{
-			if(temp_b->nbr < stack_a->nbr && temp_b->nbr > better_index)
+			if (temp_b->nbr < stack_a->nbr && temp_b->nbr > better_index)
 			{
 				better_index = temp_b->nbr;
 				temp_tag = temp_b;

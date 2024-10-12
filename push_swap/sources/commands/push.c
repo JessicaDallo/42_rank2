@@ -16,4 +16,3 @@ void	push(t_node **stack_1, t_node **stack_2, char c)
 	else if (c == 'b')
 		ft_printf("pb\n");
 }
-

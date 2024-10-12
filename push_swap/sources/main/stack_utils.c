@@ -17,9 +17,9 @@ int	stack_size(t_node *stack)
 
 t_node	*stack_min(t_node *stack_a)
 {
+	t_node		*temp_min;
+	t_node		*temp;
 	long		i;
-	t_node	*temp_min;
-	t_node	*temp;
 
 	temp = stack_a;
 	i = LONG_MAX;
@@ -38,8 +38,8 @@ t_node	*stack_min(t_node *stack_a)
 t_node	*stack_max(t_node *stack_a)
 {
 	long		i;
-	t_node	*temp;
-	t_node	*temp_max;
+	t_node		*temp;
+	t_node		*temp_max;
 
 	temp = stack_a;
 	i = LONG_MIN;
@@ -54,3 +54,17 @@ t_node	*stack_max(t_node *stack_a)
 	}
 	return (temp_max);
 }
+
+// void	print_list(t_node **stack, char c)
+// {
+// 	t_node	*temp;
+
+// 	temp = *stack;
+// 	while (temp)
+// 	{
+// 		ft_printf("%i ", temp->nbr, c);
+// 		temp = temp->next;
+// 	}
+// 	ft_printf("%c \n", c);
+// 	ft_printf("%i -> list size\n", stack_size(*stack));
+// }

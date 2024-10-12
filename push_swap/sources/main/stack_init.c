@@ -5,10 +5,10 @@ void	add_to_end_stack(t_node *stack, char *num)
 	t_node	*temp;
 
 	temp = create_stack(num);
-	if(stack == NULL)
+	if (stack == NULL)
 	{
 		stack = temp;
-		return;
+		return ;
 	}
 	while (stack->next != NULL)
 		stack = stack->next;

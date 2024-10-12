@@ -2,8 +2,8 @@
 
 void	better_move(t_node *stack)
 {
+	t_node		*better_node;
 	long		cheap_nbr;
-	t_node	*better_node;
 
 	if (!stack)
 		return ;
@@ -11,7 +11,7 @@ void	better_move(t_node *stack)
 	better_node = NULL;
 	while (stack)
 	{
-		if(stack->push_cost < cheap_nbr)
+		if (stack->push_cost < cheap_nbr)
 		{
 			cheap_nbr = stack->push_cost;
 			better_node = stack;
@@ -20,7 +20,6 @@ void	better_move(t_node *stack)
 	}
 	better_node->cheap = 1;
 }
-
 
 void	node_ind(t_node *stack)
 {
@@ -31,12 +30,12 @@ void	node_ind(t_node *stack)
 	if (!stack)
 		return ;
 	median = stack_size(stack) / 2;
-	while(stack)
+	while (stack)
 	{
 		stack->index = i;
-		if(i <= median)
+		if (i <= median)
 			stack->above_med = 1;
-		else 
+		else
 			stack->above_med = 0;
 		stack = stack->next;
 		i++;
@@ -45,35 +44,35 @@ void	node_ind(t_node *stack)
 
 t_node	*get_better(t_node *stack)
 {
-	if(!stack)
-		return(NULL);
+	if (!stack)
+		return (NULL);
 	while (stack)
 	{
-		if(stack->cheap)
-			return(stack);
+		if (stack->cheap)
+			return (stack);
 		stack = stack->next;
 	}
 	return (NULL);
 }
 
-void	pre_push(t_node **stack, t_node *top_node, char letter)//top node porque precisa que o melhor node seja o top
+//top node porque precisa que o melhor node seja o top
+void	pre_push(t_node **stack, t_node *top_node, char letter)
 {
 	while (*stack != top_node)
 	{
-		if(letter == 'a')
+		if (letter == 'a')
 		{
-			if(top_node->above_med)
+			if (top_node->above_med)
 				rotate(stack, 'a');
 			else
 				rev_rotate(stack, 'a');
 		}
-		else if(letter == 'b')
+		else if (letter == 'b')
 		{
-			if(top_node->above_med)
-				rotate	(stack, 'b');
+			if (top_node->above_med)
+				rotate (stack, 'b');
 			else
 				rev_rotate(stack, 'b');
 		}
 	}
-	
 }
