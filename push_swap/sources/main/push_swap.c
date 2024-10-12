@@ -29,11 +29,12 @@ void	print_list(t_node **stack, char c)
 
 void	push_swap(int ac, t_node **stack_a, t_node **stack_b)
 {
-	if (ac - 1 == 2)
+	(void)ac;
+	if (stack_size(*stack_a) == 2)
 		swap(stack_a, 'a');
-	else if (ac - 1 == 3)
+	else if (stack_size(*stack_a) == 3)
 		sort_three(stack_a);
-	else if (ac - 1 <= 5)
+	else if (stack_size(*stack_a) <= 5)
 		sort_five(stack_a, stack_b);
 	else
 		ordering(stack_a, stack_b);

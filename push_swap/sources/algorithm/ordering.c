@@ -24,7 +24,7 @@ void	a_to_b(t_node **stack_a, t_node **stack_b)
 	t_node	*better_node;
 
 	better_node = get_better(*stack_a);
-	if (better_node->above_med && (better_node->tag_node->above_med == 1))
+	if (better_node->above_med && (better_node->tag_node->above_med))
 	{
 		rotate_both(stack_a, stack_b, better_node);
 	}
@@ -38,11 +38,14 @@ void	a_to_b(t_node **stack_a, t_node **stack_b)
 
 void	ordering(t_node **stack_a, t_node **stack_b)
 {
-	if(stack_size(*stack_a) > 3 && !is_sorted(*stack_a))
+	int	size_a;
+
+	size_a = stack_size(*stack_a);
+	if(size_a-- > 3 && !is_sorted(*stack_a))
 		push(stack_a, stack_b, 'b');
-	if(stack_size(*stack_a) > 3 && !is_sorted(*stack_a))
+	if(size_a-- > 3 && !is_sorted(*stack_a))
 		push(stack_a, stack_b, 'b');
-	while(stack_size(*stack_a) > 3 && !is_sorted(*stack_a))
+	while(size_a-- > 3 && !is_sorted(*stack_a))
 	{
 		init_push_a(*stack_a, *stack_b);
 		a_to_b(stack_a, stack_b);

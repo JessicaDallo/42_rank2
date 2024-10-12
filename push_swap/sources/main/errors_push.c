@@ -13,7 +13,10 @@ int	error_duplicate(char **av)
 		while (av[j])
 		{
 			if (ft_atol(av[i]) == ft_atol(av[j]))
+			{
+				ft_printf("é na duplicate");
 				return (1);
+			}
 			j++;
 		}
 		i++;
@@ -64,7 +67,10 @@ int	error_syntax(char **av)
 			if (j == 0 && ((av[i][j] == '-') || av[i][j] == '+'))
 				j++;
 			if (!ft_isdigit(av[i][j]))
+			{
+				ft_printf("é na sintax");
 				return (1);
+			}
 			j++;
 		}
 		i++;
@@ -80,7 +86,10 @@ int	error_size(char **av)
 	while (av[i])
 	{
 		if (ft_atol(av[i]) > INT_MAX || ft_atol(av[i]) < INT_MIN)
+			{
+				ft_printf("é no size");
 				return (1);
+			}
 		i++;
 	}
 	return (0);

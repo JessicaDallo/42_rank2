@@ -10,10 +10,10 @@ void	cost_a(t_node *stack_a, t_node *stack_b)
 	while (stack_a)
 	{
 		stack_a->push_cost = stack_a->index;
-		if (stack_a->above_med == 0)
+		if (!(stack_a->above_med))
 			stack_a->push_cost = size_a - (stack_a->index);
-		if (stack_a->tag_node->above_med == 1)
-			stack_a->push_cost = stack_a->tag_node->index;
+		if (stack_a->tag_node->above_med)
+			stack_a->push_cost += stack_a->tag_node->index;
 		else
 			stack_a->push_cost += size_b - (stack_a->tag_node->index);
 		stack_a = stack_a->next;
@@ -35,7 +35,7 @@ void	tag_node_a(t_node *stack_a, t_node *stack_b)
 			if(temp_b->nbr < stack_a->nbr && temp_b->nbr > better_index)
 			{
 				better_index = temp_b->nbr;
-				temp_tag = stack_b;
+				temp_tag = temp_b;
 			}
 			temp_b = temp_b->next;
 		}

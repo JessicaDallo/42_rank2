@@ -26,7 +26,7 @@ typedef struct t_node
 	int		cheap;
 	struct t_node	*tag_node;
 	struct t_node	*next;
-	struct t_node	*prev;
+	struct t_node	*head;
 }	t_node;
 
 t_node	*create_stack(char *num);

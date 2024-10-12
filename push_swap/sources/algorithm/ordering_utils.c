@@ -24,22 +24,22 @@ void	better_move(t_node *stack)
 
 void	node_ind(t_node *stack)
 {
-	int	index;
+	int	i;
 	int	median;
 
-	index = 0;
+	i = 0;
 	if (!stack)
 		return ;
 	median = stack_size(stack) / 2;
 	while(stack)
 	{
-		stack->index = index;
-		if(index <= median)
+		stack->index = i;
+		if(i <= median)
 			stack->above_med = 1;
 		else 
 			stack->above_med = 0;
 		stack = stack->next;
-		index++;
+		i++;
 	}
 }
 
@@ -49,7 +49,7 @@ t_node	*get_better(t_node *stack)
 		return(NULL);
 	while (stack)
 	{
-		if(stack->cheap == 1)
+		if(stack->cheap)
 			return(stack);
 		stack = stack->next;
 	}
