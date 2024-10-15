@@ -1,6 +1,6 @@
 #Compiling Variables#
 CC = cc
-CFLAGS = -Iminilibx-linux -Iinclude -g
+CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux -Iinclude -g
 MINILXFLAGS = -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd -no-pie
 
 #Names#
